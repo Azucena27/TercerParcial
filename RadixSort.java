@@ -18,15 +18,12 @@ public class RadixSort {
         for(int i = 0; i < 1000001; ++i){
             Random R = new Random();
             int x = R.nextInt(100001);
-
             insertar(x);
         }
-        
         ordenamientoRadix();
         imprimir();
     } 
     
-
     public static void insertar (int dato){
         Nodo nuevo = new Nodo();
         nuevo.dato = dato;
@@ -45,20 +42,20 @@ public class RadixSort {
         }
     }
 
-    public static int numeroMasGrande(Nodo incio){
+    public static int numeroMayor(Nodo incio){
         Nodo aux = inicio;
-        int digitoMasGrande = aux.dato;
+        int digitoMayor = aux.dato;
         while (aux != null){
-            if (aux.dato > digitoMasGrande){
-                digitoMasGrande = aux.dato;
+            if (aux.dato > digitoMayor){
+                digitoMayor = aux.dato;
             }
             aux = aux.siguiente;
         }
-        return digitoMasGrande;
+        return digitoMayor;
     }
 
     public static int Digitos(){
-        int digitos = numeroMasGrande(inicio);
+        int digitos = numeroMayor(inicio);
         int i = 0;
         while (digitos != 0){
             digitos /= 10;
@@ -109,7 +106,7 @@ public class RadixSort {
     }
 
     public static void ordenamientoRadix(){
-        int max = numeroMasGrande(inicio);
+        int max = numeroMayor(inicio);
 
         for (int lugar = 1; max/lugar > 0; lugar*=10) {
             Radix(mat(), Digitos(), lugar);
